@@ -1,14 +1,16 @@
 /*
  * Create a list that holds all of your cards
  */
-const cardTypes = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'ca-cube', 'fa-leaf', 'a-bicycle', 'fa-bomb',
+const cardTypes = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-leaf', 'fa-bicycle', 'fa-bomb',
 'fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-leaf', 'fa-bicycle', 'fa-bomb'];
+let deck = $('.deck');
+let openCards = [];
 
 // Display the cards on the page
 
 /* 
 * shuffle the list of cards 
-* Shuffle function from http://stackoverflow.com/a/2450976
+* shuffle function from http://stackoverflow.com/a/2450976
 */
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -29,22 +31,32 @@ function shuffle(array) {
  * add each card's HTML to the page
 */
 function makeCardHTML() {
-	let shuffedCards = shuffle(cardTypes);
-	let deck = $('.deck');
+	let shuffledCards = shuffle(cardTypes);
 	let newCard;
-	for (cards in shuffedCards) {
-		newCard = $('<li class="card"><i class="fa '+ shuffedCards[cards] + '"></i></li>');
+	for (cards in shuffledCards) {
+		newCard = $('<li class="card"><i class="fa '+ shuffledCards[cards] + '"></i></li>');
 		deck.append(newCard.clone());
 	}
 }
 makeCardHTML();
+
 /*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  *  - if the list already has another card, check to see if the two cards match
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+/*
+ * set up the event listener for a card. If a card is clicked:
+ *  display the card's symbol
+ *  add the card to a *list* of "open" cards
+ */
+function showCard() {
+	$('.card').click(function() {
+		$(this).toggleClass('open show');
+		openCards.push($(this));
+	});
+}
+showCard()
