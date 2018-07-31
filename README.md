@@ -4,6 +4,7 @@
 
 * [Instructions](#instructions)
 * [Contributing](#contributing)
+* [Built With](#builtwith)
 
 ## Instructions
 
@@ -11,10 +12,16 @@ The starter project has some HTML and CSS styling to display a static version of
 
 To get started, open `js/app.js` and start building out the app's functionality
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Built With
+
+* [HTML]
+* [CSS]
+* [JavaScript]
+* [JQuery](http://jquery.com/) - JavaScript Framework Used
+* [Animate.CSS](https://daneden.github.io/animate.css/) - Used to Create the animations in the cards
+* [Bootstrap](https://getbootstrap.com/) - Front-End Framework
