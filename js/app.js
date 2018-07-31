@@ -42,12 +42,6 @@ function makeCardHTML() {
 makeCardHTML();
 
 /*
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
-
-/*
  *  set up the event listener for a card. If a card is clicked:
  *  add the card to a *list* of "open" cards
  */
@@ -62,7 +56,7 @@ $('.card').click(function() {
 function displayCard(card) {
 	return $(card).toggleClass('open show');
 }
-
+// pushes the selected card onto the openCard list.
 function addCard(card) {
 	return openCards.push($(card));
 }
@@ -70,6 +64,7 @@ function addCard(card) {
 /*
  * if the list already has another card, check to see if the two cards match
  * if the cards do match, lock the cards in the open position
+ * if the cards do not match, remove the cards from the list and hide the card's symbol
  */
 function doesCardMatch(card) {
 	if (card.length === 2) {
@@ -83,12 +78,21 @@ function doesCardMatch(card) {
 				  openCards[1].toggleClass('open show');
 				  openCards = [];}, 1000);
 		}
-	moves += 1;
+	displayMoves();
 	}
 }
 
-/*
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+ // increment the move counter and display it on the page 
+function displayMoves() {
+	moves += 1;
+	$('.moves').text(moves);
+	if (moves === 1) {
+		$('.mov').text('Move');
+	} else {
+		$('.mov').text('Moves');
+	}
+}
+
+ // if all cards have matched, display a message with the final score
+ // function finalScore() {
+ // }
