@@ -73,14 +73,16 @@ function doesCardMatch(card) {
 		if (openCards[0][0].firstChild.className === openCards[1][0].firstChild.className) {
 			openCards[0].addClass('match animated bounce');
 			openCards[1].addClass('match animated bounce');
-			openCards = [];
+			openCards = []
 		} else { 
-			openCards[0].toggleClass('animated shake');
-			openCards[1].toggleClass('animated shake');
+			openCards[0].addClass('animated shake');
+			openCards[1].addClass('animated shake');
 			setTimeout(function() 
 				{ openCards[0].toggleClass('open show'); 
 				  openCards[1].toggleClass('open show');
-				  openCards = [];}, 1000);
+				  openCards[0].removeClass('animated shake');
+				  openCards[1].removeClass('animated shake');
+				  openCards = [];}, 500);
 		}
 		displayMoves();
 	}
