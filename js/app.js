@@ -5,6 +5,7 @@ const cardTypes = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa
 'fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-leaf', 'fa-bicycle', 'fa-bomb'];
 let deck = $('.deck');
 let openCards = [];
+let moves = 0;
 
 // Display the cards on the page
 
@@ -41,22 +42,53 @@ function makeCardHTML() {
 makeCardHTML();
 
 /*
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
 /*
- * set up the event listener for a card. If a card is clicked:
- *  display the card's symbol
+ *  set up the event listener for a card. If a card is clicked:
  *  add the card to a *list* of "open" cards
  */
-function showCard() {
-	$('.card').click(function() {
-		$(this).toggleClass('open show');
-		openCards.push($(this));
-	});
+	
+$('.card').click(function() {
+	displayCard(this);
+	addCard(this);
+	doesCardMatch(openCards);
+});
+
+// display the card's symbol
+function displayCard(card) {
+	return $(card).toggleClass('open show');
 }
-showCard()
+
+function addCard(card) {
+	return openCards.push($(card));
+}
+
+/*
+ * if the list already has another card, check to see if the two cards match
+ * if the cards do match, lock the cards in the open position
+ */
+function doesCardMatch(card) {
+	if (card.length === 2) {
+		if (openCards[0][0].firstChild.className === openCards[1][0].firstChild.className) {
+			openCards[0].addClass('match');
+			openCards[1].addClass('match');
+			openCards = [];
+		} else { 
+			setTimeout(function() 
+				{ openCards[0].toggleClass('open show'); 
+				  openCards[1].toggleClass('open show');
+				  openCards = [];}, 1000);
+		}
+	moves += 1;
+	}
+}
+
+/*
+ *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+ *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+ *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+ */
