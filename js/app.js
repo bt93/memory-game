@@ -6,6 +6,7 @@ const cardTypes = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa
 let deck = $('.deck');
 let openCards = [];
 let moves = 0;
+let clock;
 
 // Display the cards on the page
 
@@ -93,7 +94,7 @@ function displayMoves() {
 	$('.moves').text(moves);
 	if (moves === 1) {
 		$('.mov').text('Move');
-		timer();
+		startTimer();
 	} else {
 		$('.mov').text('Moves');
 	}
@@ -114,16 +115,20 @@ function countStars() {
 }
 
 // timer going up function https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
-function timer() {
+function startTimer() {
 	let sec = 0;
     function pad ( val ) { return val > 9 ? val : "0" + val; }
-    setInterval( function(){
+    clock = setInterval( function(){
         $("#seconds").html(pad(++sec%60));
         $('.colon').html(':')
         $("#minutes").html(pad(parseInt(sec/60,10)));
     }, 1000);
 }
 
+// this function will stop the clock when called on
+function stopTimer() {
+	clearInterval(clock);
+}
 
  // if all cards have matched, display a message with the final score
  // function finalScore() {
