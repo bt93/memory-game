@@ -84,13 +84,16 @@ function doesCardMatch(card) {
 		displayMoves();
 	}
 }
-
- // increment the move counter and display it on the page and call on the countStars
+/*
+ * increment the move counter and display it on the page and call on the countStars function
+ * also calls on the timer function when first move is made.
+ */
 function displayMoves() {
 	moves += 1;
 	$('.moves').text(moves);
 	if (moves === 1) {
 		$('.mov').text('Move');
+		timer();
 	} else {
 		$('.mov').text('Moves');
 	}
@@ -104,11 +107,21 @@ function countStars() {
 		if (moves === 17 || 
 			moves === 34 || 
 			moves === 51 || 
-			moves === 68 || 
-			moves === 82) {
+			moves === 68) {
 			star.last().remove();
 	}
 }
+}
+
+// timer going up function https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
+function timer() {
+	let sec = 0;
+    function pad ( val ) { return val > 9 ? val : "0" + val; }
+    setInterval( function(){
+        $("#seconds").html(pad(++sec%60));
+        $('.colon').html(':')
+        $("#minutes").html(pad(parseInt(sec/60,10)));
+    }, 1000);
 }
 
 
