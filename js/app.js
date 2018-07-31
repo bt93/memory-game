@@ -4,6 +4,7 @@
 const cardTypes = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-leaf', 'fa-bicycle', 'fa-bomb',
 'fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-leaf', 'fa-bicycle', 'fa-bomb'];
 let deck = $('.deck');
+let restartBtn = $('.restart');
 let openCards = [];
 let moves = 0;
 let clock;
@@ -73,7 +74,7 @@ function doesCardMatch(card) {
 		if (openCards[0][0].firstChild.className === openCards[1][0].firstChild.className) {
 			openCards[0].addClass('match animated bounce');
 			openCards[1].addClass('match animated bounce');
-			openCards = []
+			openCards = [];
 		} else { 
 			openCards[0].addClass('animated shake');
 			openCards[1].addClass('animated shake');
@@ -131,6 +132,16 @@ function startTimer() {
 function stopTimer() {
 	clearInterval(clock);
 }
+
+// will restart the game when restart button is clicked
+restartBtn.click(function() {
+	$('.card').removeClass('open show');
+	$('.card').removeClass('match animated bounce');
+	moves = -1;
+	stopTimer();
+	displayMoves();
+	openCards = [];
+})
 
  // if all cards have matched, display a message with the final score
  // function finalScore() {
