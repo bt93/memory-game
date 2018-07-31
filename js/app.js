@@ -56,6 +56,7 @@ $('.card').click(function() {
 function displayCard(card) {
 	return $(card).toggleClass('open show');
 }
+
 // pushes the selected card onto the openCard list.
 function addCard(card) {
 	return openCards.push($(card));
@@ -69,20 +70,22 @@ function addCard(card) {
 function doesCardMatch(card) {
 	if (card.length === 2) {
 		if (openCards[0][0].firstChild.className === openCards[1][0].firstChild.className) {
-			openCards[0].addClass('match');
-			openCards[1].addClass('match');
+			openCards[0].addClass('match animated bounce');
+			openCards[1].addClass('match animated bounce');
 			openCards = [];
 		} else { 
+			openCards[0].toggleClass('animated shake');
+			openCards[1].toggleClass('animated shake');
 			setTimeout(function() 
 				{ openCards[0].toggleClass('open show'); 
 				  openCards[1].toggleClass('open show');
 				  openCards = [];}, 1000);
 		}
-	displayMoves();
+		displayMoves();
 	}
 }
 
- // increment the move counter and display it on the page 
+ // increment the move counter and display it on the page and call on the countStars
 function displayMoves() {
 	moves += 1;
 	$('.moves').text(moves);
@@ -91,7 +94,23 @@ function displayMoves() {
 	} else {
 		$('.mov').text('Moves');
 	}
+	countStars();
 }
+
+// count the score as game is being played
+function countStars() {
+	let star = $('.fa-star');
+	for (num in star) {
+		if (moves === 17 || 
+			moves === 34 || 
+			moves === 51 || 
+			moves === 68 || 
+			moves === 82) {
+			star.last().remove();
+	}
+}
+}
+
 
  // if all cards have matched, display a message with the final score
  // function finalScore() {
