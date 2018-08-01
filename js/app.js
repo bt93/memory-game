@@ -7,13 +7,15 @@ const totalMatches = 8;
 let playerMatches = 0;
 let deck = $('.deck');
 let restartBtn = $('.restart');
+let restartModel = $('.restartbtn');
+let closeModel = $('.closebtn');
+let star = $('.start');
+let starFinal = $('.final')
 let modal = $('#modal');
 let overLay = $('#overlay');
 let openCards = [];
 let moves = 0;
 let clock;
-let rating;
-let star = $('.fa-star');
 
 overLay.hide();
 modal.hide();
@@ -121,13 +123,13 @@ function displayMoves() {
 
 // count the score as game is being played
 function countStars() {
-	let star = $('.fa-star');
+	let star = $('.start');
+	let starFinal = $('.final')
 	for (num in star) {
 		if (moves === 17 || 
-			moves === 34 || 
-			moves === 51 || 
-			moves === 68) {
-			star.last().remove();
+			moves === 34) {
+			star.last().hide();
+			starFinal.last().hide();
 	}
 }
 }
@@ -137,9 +139,9 @@ function startTimer() {
 	let sec = 0;
     function pad ( val ) { return val > 9 ? val : "0" + val; }
     clock = setInterval( function(){
-        $("#seconds").html(pad(++sec%60));
+        $(".seconds").html(pad(++sec%60));
         $('.colon').html(':')
-        $("#minutes").html(pad(parseInt(sec/60,10)));
+        $(".minutes").html(pad(parseInt(sec/60,10)));
     }, 1000);
 }
 
@@ -150,12 +152,18 @@ function stopTimer() {
 
 // will restart the game when restart button is clicked
 restartBtn.click(function() {
-	$('.card').removeClass('open show');
-	$('.card').removeClass('match animated bounce');
-	moves = -1;
-	stopTimer();
-	displayMoves();
-	openCards = [];
+	restart();
+})
+
+restartModel.click(function() {
+	overLay.hide();
+	modal.hide();	
+	restart();
+})
+
+closeModel.click(function() {
+	overLay.hide();
+	modal.hide();
 })
 
 function gameEnd() {
@@ -164,10 +172,16 @@ function gameEnd() {
 	modal.show();
 	let minutes = $("#minutes");
 	let seconds = $('#seconds');
-	$(".final-seconds").html(minutes);
-	$('.final-colon').html(':')
-	$(".final-minutes").html(seconds);
-	$(".final-rating").html(star.length);
 	$('.final-moves').html(moves);
-	$('.final-time').html(clock);
+}
+
+function restart() {
+	$('.card').removeClass('open show');
+	$('.card').removeClass('match animated bounce');
+	moves = -1;
+	star.last().show();
+	starFinal.last().show();
+	stopTimer();
+	displayMoves();
+	openCards = [];
 }
