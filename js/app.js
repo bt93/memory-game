@@ -3,6 +3,8 @@
  */
 const cardTypes = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-leaf', 'fa-bicycle', 'fa-bomb',
 'fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-leaf', 'fa-bicycle', 'fa-bomb'];
+const totalMatches = 8;
+let playerMatches = 0;
 let deck = $('.deck');
 let restartBtn = $('.restart');
 let openCards = [];
@@ -75,12 +77,17 @@ function doesCardMatch(card) {
 			openCards[0].addClass('match animated bounce');
 			openCards[1].addClass('match animated bounce');
 			openCards = [];
+			playerMatches++;
+			 // if all cards have matched, display a message with the final score
+			if (playerMatches === totalMatches) {
+				// opens modal that shows final score, time, etc.
+			}
 		} else { 
 			openCards[0].addClass('animated shake');
 			openCards[1].addClass('animated shake');
 			setTimeout(function() 
-				{ openCards[0].toggleClass('open show'); 
-				  openCards[1].toggleClass('open show');
+				{ openCards[0].removeClass('open show'); 
+				  openCards[1].removeClass('open show');
 				  openCards[0].removeClass('animated shake');
 				  openCards[1].removeClass('animated shake');
 				  openCards = [];}, 500);
@@ -142,7 +149,3 @@ restartBtn.click(function() {
 	displayMoves();
 	openCards = [];
 })
-
- // if all cards have matched, display a message with the final score
- // function finalScore() {
- // }
