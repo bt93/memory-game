@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <title>Matching Game</title>
     <meta name="description" content="">
+    <!-- bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <!-- fonts used for the card pictures -->
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <!-- animate.css https://github.com/daneden/animate.css -->
@@ -46,10 +49,16 @@
                 <h1>You Win!</h1>
                 <p>Rating: <span class="final-rating"></span></p>
                 <p>Moves: <span class="final-moves"></span></p>
-                <p>TIme: <span class="final-time"></span></p>
+                <p>TIme: <span class="final-minues"></span><span class="final-colon"></span><span class="final-seconds"></span></p>
                 <div id="buttons">
-                    <button class="closebtn"><a href="#">Close</a></button>
-                    <button class="restartbtn"><a href="#">Restart</a></button>
+                    <button type="button" class="closebtn btn btn-dark">Close</button>
+                    <button type = "button" class="restartbtn btn btn-dark">Restart</button>
+                </div>
+                <div class="info">
+                    <p>Here's your reward!</p>
+                    <!-- Random img from https://thedogapi.com/ -->
+                    <img src="https://api.thedogapi.com/v1/images/search?format=src&mime_types=image/gif">
+                    <p>Be sure to check out the source code for this game <a href="https://github.com/bt93/memory-game" target="_blank">here</a>!</p>
                 </div>
             </div>
         </div>

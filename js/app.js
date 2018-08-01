@@ -7,11 +7,16 @@ const totalMatches = 8;
 let playerMatches = 0;
 let deck = $('.deck');
 let restartBtn = $('.restart');
+let modal = $('#modal');
+let overLay = $('#overlay');
 let openCards = [];
 let moves = 0;
 let clock;
 let rating;
+let star = $('.fa-star');
 
+overLay.hide();
+modal.hide();
 // Display the cards on the page
 
 /* 
@@ -81,8 +86,7 @@ function doesCardMatch(card) {
 			playerMatches++;
 			 // if all cards have matched, display a message with the final score
 			if (playerMatches === totalMatches) {
-				stopTimer();
-				alert("You won!")
+				gameEnd();
 				// opens modal that shows final score, time, etc.
 				console.log('Game Finish');
 			}
@@ -153,3 +157,17 @@ restartBtn.click(function() {
 	displayMoves();
 	openCards = [];
 })
+
+function gameEnd() {
+	stopTimer();
+	overLay.show();
+	modal.show();
+	let minutes = $("#minutes");
+	let seconds = $('#seconds');
+	$(".final-seconds").html(minutes);
+	$('.final-colon').html(':')
+	$(".final-minutes").html(seconds);
+	$(".final-rating").html(star.length);
+	$('.final-moves').html(moves);
+	$('.final-time').html(clock);
+}
