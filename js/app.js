@@ -73,7 +73,7 @@ function addCard(card) {
  */
 function doesCardMatch(card) {
 	if (card.length === 2) {
-		if (openCards[0][0].firstChild.className === openCards[1][0].firstChild.className) {
+		if (openCards[0][0].firstChild.className === openCards[1][0].firstChild.className && card.includes(self)) {
 			openCards[0].addClass('match animated bounce');
 			openCards[1].addClass('match animated bounce');
 			openCards = [];
@@ -81,6 +81,7 @@ function doesCardMatch(card) {
 			 // if all cards have matched, display a message with the final score
 			if (playerMatches === totalMatches) {
 				// opens modal that shows final score, time, etc.
+				console.log('Game Finsish');
 			}
 		} else { 
 			openCards[0].addClass('animated shake');
