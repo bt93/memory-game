@@ -39,6 +39,20 @@
         <ul class="deck">
             <!-- Holds the deck of cards for game -->
         </ul>
+        <!-- Holds modal when player wins the game -->
+        <div id="overlay"></div>
+        <div id="modal">
+            <div id="content">
+                <h1>You Win!</h1>
+                <p>Rating: <span class="final-rating"></span></p>
+                <p>Moves: <span class="final-moves"></span></p>
+                <p>TIme: <span class="final-time"></span></p>
+                <div id="buttons">
+                    <button class="closebtn"><a href="#">Close</a></button>
+                    <button class="restartbtn"><a href="#">Restart</a></button>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- /Container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

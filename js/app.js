@@ -10,6 +10,7 @@ let restartBtn = $('.restart');
 let openCards = [];
 let moves = 0;
 let clock;
+let rating;
 
 // Display the cards on the page
 
@@ -72,16 +73,18 @@ function addCard(card) {
  * if the cards do not match, remove the cards from the list and hide the card's symbol
  */
 function doesCardMatch(card) {
-	if (card.length === 2) {
-		if (openCards[0][0].firstChild.className === openCards[1][0].firstChild.className && card.includes(self)) {
+	if (card.length === 2 && openCards) {
+		if (openCards[0][0].firstChild.className === openCards[1][0].firstChild.className) {
 			openCards[0].addClass('match animated bounce');
 			openCards[1].addClass('match animated bounce');
 			openCards = [];
 			playerMatches++;
 			 // if all cards have matched, display a message with the final score
 			if (playerMatches === totalMatches) {
+				stopTimer();
+				alert("You won!")
 				// opens modal that shows final score, time, etc.
-				console.log('Game Finsish');
+				console.log('Game Finish');
 			}
 		} else { 
 			openCards[0].addClass('animated shake');
