@@ -91,14 +91,14 @@ h1 {
     margin-bottom: 10px;
 }
 
-.score-panel .stars {
+.score-panel #stars1 {
     margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
 }
 
-.score-panel .stars li {
+.score-panel #stars1 li {
     list-style: none;
     display: inline-block;
 }
@@ -110,6 +110,7 @@ h1 {
 
 /*
  * Syles for popup modal   
+ * styles made with help from http://www.jacklmoore.com/notes/jquery-modal-tutorial/
  */
 
  #overlay {
@@ -150,14 +151,14 @@ h1 {
     text-align: center;
 }
 
-#modal #content .stars {
+#modal #content #stars2 {
     margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
 }
 
-#modal #content .stars li {
+#modal #content #stars2 li {
     list-style: none;
     display: inline-block;
 }

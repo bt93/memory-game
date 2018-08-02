@@ -22,16 +22,14 @@
         <!-- Score panel -->
         <section class="score-panel">
             <!-- Displays amount of stars made by the player -->
-        	<ul class="stars">
-        		<li><i class="fa fa-star start"></i></li>
-        		<li><i class="fa fa-star start"></i></li>
-        		<li><i class="fa fa-star start"></i></li>
+        	<ul id="stars1">
+        	
         	</ul>
             <!-- Displays the number of moves made -->
         	<span class="moves"></span> <span class="mov">Moves</span>
             <!-- https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript -->
             <span class="minutes"></span><span class="colon"></span><span class="seconds"></span>
-
+            
             <div class="restart">
         		<i class="fa fa-repeat"></i>
         	</div>
@@ -46,10 +44,8 @@
             <div id="content">
                 <h1>You Win!</h1>
                 <p>Rating: </p> 
-                <ul class="stars">
-                    <li><i class="fa fa-star final"></i></li>
-                    <li><i class="fa fa-star final"></i></li>
-                    <li><i class="fa fa-star final"></i></li>
+                <ul id="stars2">
+
                 </ul>
                 <p>Moves: <span class="final-moves"></span></p>
                 <p>TIme: <span class="final-minues"></span><span class="minutes"></span><span class="colon"></span><span class="seconds"></span></p>
@@ -67,6 +63,7 @@
         </div>
     </div>
     <!-- /Container -->
+    <!-- JQuery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/app.js"></script>
 </body>

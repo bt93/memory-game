@@ -10,7 +10,6 @@ let restartBtn = $('.restart');
 let restartModel = $('.restartbtn');
 let closeModel = $('.closebtn');
 let star = $('.start');
-let starFinal = $('.final')
 let modal = $('#modal');
 let overLay = $('#overlay');
 let openCards = [];
@@ -57,12 +56,14 @@ makeCardHTML();
  *  set up the event listener for a card. If a card is clicked:
  *  add the card to a *list* of "open" cards
  */
-	
-$('.card').click(function() {
-	displayCard(this);
-	addCard(this);
-	doesCardMatch(openCards);
-});
+function clickCards() {
+	$('.card').click(function() {
+		displayCard(this);
+		addCard(this);
+		doesCardMatch(openCards);
+	});
+}
+clickCards();
 
 // display the card's symbol
 function displayCard(card) {
@@ -86,10 +87,9 @@ function doesCardMatch(card) {
 			openCards[1].addClass('match animated bounce');
 			openCards = [];
 			playerMatches++;
-			 // if all cards have matched, display a message with the final score
+			 // if all cards have matched, display a modal with the final score
 			if (playerMatches === totalMatches) {
 				gameEnd();
-				// opens modal that shows final score, time, etc.
 				console.log('Game Finish');
 			}
 		} else { 
@@ -106,7 +106,7 @@ function doesCardMatch(card) {
 	}
 }
 /*
- * increment the move counter and display it on the page and call on the countStars function
+ * increment the move counter and display it on the page and call on removeStar function
  * also calls on the timer function when first move is made.
  */
 function displayMoves() {
@@ -118,20 +118,23 @@ function displayMoves() {
 	} else {
 		$('.mov').text('Moves');
 	}
-	countStars();
-}
-
-// count the score as game is being played
-function countStars() {
-	let star = $('.start');
-	let starFinal = $('.final')
-	for (num in star) {
-		if (moves === 17 || 
-			moves === 34) {
-			star.last().hide();
-			starFinal.last().hide();
+	if (moves === 20 || moves === 40) {
+		removeStar();
 	}
 }
+
+// appends 3 stars to both the modal and the game
+function initStars() {
+	for (let i = 0; i < 3; i++) {
+		$('#stars1').append('<li><i class="fa fa-star" id="star1"></i></li>');
+		$('#stars2').append('<li><i class="fa fa-star" id="star2"></i></li>');
+	}
+}
+
+// removes star from modal and game
+function removeStar() {
+	$('#star1').last().remove();
+	$('#star2').last().remove();
 }
 
 // timer going up function https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
@@ -155,33 +158,45 @@ restartBtn.click(function() {
 	restart();
 })
 
+// does same thing but with the modal restart button and hides the modal
 restartModel.click(function() {
 	overLay.hide();
 	modal.hide();	
 	restart();
 })
 
+// simply hides the modal
 closeModel.click(function() {
 	overLay.hide();
 	modal.hide();
 })
 
+// opens modal and displays final score, total moves and time
 function gameEnd() {
 	stopTimer();
 	overLay.show();
 	modal.show();
-	let minutes = $("#minutes");
-	let seconds = $('#seconds');
 	$('.final-moves').html(moves);
 }
-
+/*
+ * function that is called on to restart the game, removes any open cards sets moves and amount of matches to 0
+ * and reinstates the stars. Also calls on the stopTimer and displayMoves functions. 
+ */
 function restart() {
 	$('.card').removeClass('open show');
 	$('.card').removeClass('match animated bounce');
+	$('.card').remove();
+	$('#stars1').html('');
+	$('#stars2').html('');
+	initStars();
+	makeCardHTML();
 	moves = -1;
-	star.last().show();
-	starFinal.last().show();
+	playerMatches = 0;
 	stopTimer();
+	clickCards();
 	displayMoves();
 	openCards = [];
 }
+initStars();
+
+// https://img.devrant.com/devrant/rant/r_448785_RYEUg.jpg
