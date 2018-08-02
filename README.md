@@ -16,11 +16,11 @@ If you click restart the game will restart and re-shuffle the cards.
 
 ## Screenshots
 
-![Alt text](img/screenshot_1)
+![Alt text](img/screenshot_1.png)
 Game when opened
-![Alt text](img/screenshot_2)
+![Alt text](img/screenshot_2.png)
 In the middle of a game
-![Alt text](img/screenshot_3)
+![Alt text](img/screenshot_3.png)
 Game won
 
 ## Built With
