@@ -8,6 +8,7 @@ A card matching game created for the Udacity Intro in Programming Nanodegree
 * [Built With](#builtwith)
 
 ## How to Play
+[Click Here to Play]( https://bt93.github.io/memory-game/)
 
 Click on the cards and try to match with the coresponding card. Every two cards clicked a move counter is incremented.
 On the first move a timer starts. If you reach 20 moves the first star is removed. If you reach 40 moves the second is removed.
