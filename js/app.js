@@ -61,6 +61,10 @@ function clickCards() {
 		displayCard(this);
 		addCard(this);
 		doesCardMatch(openCards);
+		openCards[0].css('pointer-events','none');
+		if (openCards.length === 2) {
+			openCards[0].css('pointer-events','auto');
+		}
 	});
 }
 clickCards();
@@ -81,7 +85,7 @@ function addCard(card) {
  * if the cards do not match, remove the cards from the list and hide the card's symbol
  */
 function doesCardMatch(card) {
-	if (card.length === 2 && openCards) {
+	if (card.length === 2) {
 		if (openCards[0][0].firstChild.className === openCards[1][0].firstChild.className) {
 			openCards[0].addClass('match animated bounce');
 			openCards[1].addClass('match animated bounce');
@@ -143,7 +147,7 @@ function startTimer() {
     function pad ( val ) { return val > 9 ? val : "0" + val; }
     clock = setInterval( function(){
         $(".seconds").html(pad(++sec%60));
-        $('.colon').html(':')
+        $('.colon').html(':');
         $(".minutes").html(pad(parseInt(sec/60,10)));
     }, 1000);
 }
@@ -193,6 +197,9 @@ function restart() {
 	moves = -1;
 	playerMatches = 0;
 	stopTimer();
+	$(".seconds").html('00');
+	$('.colon').html(':');
+	$(".minutes").html('00');
 	clickCards();
 	displayMoves();
 	openCards = [];
