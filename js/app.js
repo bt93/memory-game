@@ -177,6 +177,7 @@ closeModel.click(function() {
 
 // opens modal and displays final score, total moves and time
 function gameEnd() {
+	moves += 1;
 	stopTimer();
 	overLay.show();
 	modal.show();
