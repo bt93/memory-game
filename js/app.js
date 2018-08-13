@@ -1,8 +1,8 @@
 /*
  * Create a list that holds all of your cards
  */
-const cardTypes = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-leaf', 'fa-bicycle', 'fa-bomb',
-'fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-leaf', 'fa-bicycle', 'fa-bomb'];
+let cardTypes = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-leaf', 'fa-bicycle', 'fa-bomb']
+cardTypes = cardTypes.concat(cardTypes);
 const totalMatches = 8;
 let playerMatches = 0;
 let deck = $('.deck');
@@ -46,7 +46,7 @@ function makeCardHTML() {
 	let shuffledCards = shuffle(cardTypes);
 	let newCard;
 	for (cards in shuffledCards) {
-		newCard = $('<li class="card"><i class="fa '+ shuffledCards[cards] + '"></i></li>');
+		newCard = $(`<li class="card"><i class="fa ${shuffledCards[cards]}"></i></li>`);
 		deck.append(newCard.clone());
 	}
 }
@@ -139,6 +139,9 @@ function initStars() {
 function removeStar() {
 	$('#star1').last().remove();
 	$('#star2').last().remove();
+	$('#stars1').append('<li><i class="fa fa-star-o" id="star1"></i></li>');
+	$('#stars2').append('<li><i class="fa fa-star-o" id="star2"></i></li>');
+
 }
 
 // timer going up function https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
@@ -147,7 +150,6 @@ function startTimer() {
     function pad ( val ) { return val > 9 ? val : "0" + val; }
     clock = setInterval( function(){
         $(".seconds").html(pad(++sec%60));
-        $('.colon').html(':');
         $(".minutes").html(pad(parseInt(sec/60,10)));
     }, 1000);
 }

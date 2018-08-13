@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="description" content="Udacity Matching-Game">
+    <meta name="keywords" content="Udacity Matching JavaScript">
+    <meta name="author" content="Jason Howie">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matching Game</title>
     <meta name="description" content="">
     <link rel="shortcut icon" type="image/png" href="img/favicon.ico"/>
@@ -27,9 +31,9 @@
         	
         	</ul>
             <!-- Displays the number of moves made -->
-        	<span class="moves"></span> <span class="mov">Moves</span>
+        	<span class="moves">0</span> <span class="mov">Moves</span>
             <!-- https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript -->
-            <span class="minutes"></span><span class="colon"></span><span class="seconds"></span>
+            <span class="minutes">00</span><span class="colon">:</span><span class="seconds">00</span>
 
             <div class="restart">
         		<i class="fa fa-repeat"></i>
@@ -57,7 +61,7 @@
                 <div class="info">
                     <p>Here's your reward!</p>
                     <!-- Random img from https://thedogapi.com/ -->
-                    <img src="https://api.thedogapi.com/v1/images/search?format=src&mime_types=image/gif">
+                    <img class="dog" src="https://api.thedogapi.com/v1/images/search?format=src&mime_types=image/gif">
                     <p>Be sure to check out the source code for this game <a href="https://github.com/bt93/memory-game" target="_blank">here</a>!</p>
                 </div>
             </div>
