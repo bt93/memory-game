@@ -89,6 +89,8 @@ function doesCardMatch(card) {
 		if (openCards[0][0].firstChild.className === openCards[1][0].firstChild.className) {
 			openCards[0].addClass('match animated bounce');
 			openCards[1].addClass('match animated bounce');
+			openCards[0].css('pointer-events','none');
+			openCards[1].css('pointer-events','none');
 			openCards = [];
 			playerMatches++;
 			 // if all cards have matched, display a modal with the final score
@@ -97,14 +99,12 @@ function doesCardMatch(card) {
 				console.log('Game Finish');
 			}
 		} else { 
-			openCards[0].addClass('animated shake');
-			openCards[1].addClass('animated shake');
+			openCards[0].addClass('animated shake wrong');
+			openCards[1].addClass('animated shake wrong');
 			setTimeout(function() 
-				{ openCards[0].removeClass('open show'); 
-				  openCards[1].removeClass('open show');
-				  openCards[0].removeClass('animated shake');
-				  openCards[1].removeClass('animated shake');
-				  openCards = [];}, 500);
+				{ openCards[0].removeClass('open show wrong animated shake'); 
+				  openCards[1].removeClass('open show wrong animated shake');
+				  openCards = [];}, 700);
 		}
 		displayMoves();
 	}
@@ -201,7 +201,6 @@ function restart() {
 	playerMatches = 0;
 	stopTimer();
 	$(".seconds").html('00');
-	$('.colon').html(':');
 	$(".minutes").html('00');
 	clickCards();
 	displayMoves();
