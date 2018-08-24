@@ -175,6 +175,8 @@ restartModel.click(function() {
 closeModel.click(function() {
 	overLay.hide();
 	modal.hide();
+	$('.score-panel').show();
+	moves -= 1;
 })
 
 // opens modal and displays final score, total moves and time
@@ -183,6 +185,7 @@ function gameEnd() {
 	stopTimer();
 	overLay.show();
 	modal.show();
+	$('.score-panel').hide();
 	$('.final-moves').html(moves);
 }
 /*
@@ -195,6 +198,7 @@ function restart() {
 	$('.card').remove();
 	$('#stars1').html('');
 	$('#stars2').html('');
+	$('.score-panel').show();
 	initStars();
 	makeCardHTML();
 	moves = -1;
