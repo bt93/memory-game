@@ -16,8 +16,6 @@ let openCards = [];
 let moves = 0;
 let clock;
 
-overLay.hide();
-modal.hide();
 // Display the cards on the page
 
 /* 

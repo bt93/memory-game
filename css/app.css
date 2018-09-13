@@ -128,6 +128,7 @@ h1 {
   background: #000;
   opacity: 0.5;
   filter: alpha(opacity=50);
+  display: none;
 }
 
 #modal {
@@ -138,6 +139,7 @@ h1 {
   padding:8px;
   width: 90%;
   height: 90%;
+  display: none;
 }
 
 #content {
