@@ -69,7 +69,7 @@ clickCards();
 
 // display the card's symbol
 function displayCard(card) {
-	return $(card).toggleClass('open show');
+	return $(card).toggleClass('open show animated');
 }
 
 // pushes the selected card onto the openCard list.
@@ -160,6 +160,10 @@ function stopTimer() {
 // will restart the game when restart button is clicked
 restartBtn.click(function() {
 	restart();
+	$('.card').addClass('animated flash');
+	setTimeout(function() 
+				{ $('.card').removeClass('animated flash');}, 900);
+
 })
 
 // does same thing but with the modal restart button and hides the modal
@@ -191,8 +195,7 @@ function gameEnd() {
  * and reinstates the stars. Also calls on the stopTimer and displayMoves functions. 
  */
 function restart() {
-	$('.card').removeClass('open show');
-	$('.card').removeClass('match animated bounce');
+	$('.card').removeClass('open show match animated bounce');
 	$('.card').remove();
 	$('#stars1').html('');
 	$('#stars2').html('');
