@@ -59,9 +59,9 @@ function clickCards() {
 		displayCard(this);
 		addCard(this);
 		doesCardMatch(openCards);
-		openCards[0].css('pointer-events','none');
+		openCards[0].addClass('open');
 		if (openCards.length === 2) {
-			openCards[0].css('pointer-events','auto');
+			openCards[0].removeClass('open');
 		}
 	});
 }
@@ -87,8 +87,6 @@ function doesCardMatch(card) {
 		if (openCards[0][0].firstChild.className === openCards[1][0].firstChild.className) {
 			openCards[0].addClass('match animated bounce');
 			openCards[1].addClass('match animated bounce');
-			openCards[0].css('pointer-events','none');
-			openCards[1].css('pointer-events','none');
 			openCards = [];
 			playerMatches++;
 			 // if all cards have matched, display a modal with the final score
